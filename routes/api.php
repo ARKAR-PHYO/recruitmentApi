@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RecruitCategoriesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::resource('/recruit-categories', RecruitCategoriesController::class);
+Route::group(['middleware' => ['auth:sanctum']], function() {
+
+    Route::get('/get-all-admin-users', [AuthController::class, 'getAllAdminUsers']);
+    Route::get('/get-authenticated-user', [AuthController::class, 'getAuthenticatedUser']);
+    Route::post('/create-admin-user', [AuthController::class, 'createAdminUser']);
 });
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
