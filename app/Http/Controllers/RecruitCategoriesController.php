@@ -19,4 +19,6 @@ class RecruitCategoriesController extends Controller
             'category_slug' => 'bail|required|unique:recruit_categories,category_slug',
         ]));
     }
+
+
 }

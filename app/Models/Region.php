@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Models\User;
+use App\Models\RecruitPost;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class RecruitCategory extends Model
+class Region extends Model
 {
     use HasFactory;
     protected $guarded = [];
@@ -23,13 +23,8 @@ class RecruitCategory extends Model
         return $this->updated_at->toDateTimeString();
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
     /**
-     * Get the recruitPost that owns the RecruitCategory
+     * Get the recruitPost that owns the Region
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
